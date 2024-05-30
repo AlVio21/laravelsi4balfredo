@@ -17,8 +17,9 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Nama Fakultas</th>
                     <th>Singkatan</th>
+                    <th>Nama Fakultas</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -35,4 +36,14 @@
         </div>
       </div>
 </div>
+@if (session('success'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      Swal.fire({
+        title: "Good job!",
+        text: "{{session('success')}}",
+        icon: "success"
+      });
+    </script>
+@endif
 @endsection
