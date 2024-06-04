@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -22,7 +23,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.create');
+        $prodi = Prodi::all();
+        return view('mahasiswa.create')->with('prodi', $prodi);
     }
 
     /**
@@ -32,8 +34,13 @@ class MahasiswaController extends Controller
     {
         //dd($request);
         $val = $request->validate([
-            'nama' => "required|unique:mahasiswas",
-            
+            'npm' => "required|unique:mahasiswas",
+            'nama' => "required",
+            'tempat_lahir' => "required",
+            'tanggal_lahir' => "required|date",
+            'alamat' => "required",
+            'prodi_id' => "required",
+            'url_foto' => "required"
         ]);
 
         Mahasiswa::create($val);
