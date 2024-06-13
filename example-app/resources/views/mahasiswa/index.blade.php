@@ -43,15 +43,16 @@
                             {{-- <td>{{ $item["url_foto"] }}</td> --}}
                             <td>
                               @can('delete', $item)
-                                <form action="{{route('mahasiswa.destroy', $item["id"])}}" method="post">
+                                <form action="{{route('mahasiswa.destroy', $item["id"])}}" method="post" style="display: inline">
                                   @method('DELETE')
                                   @csrf
                                   <button type="submit" class="btn btn-sm btn-rounded btn-danger show_confirm" data-name="{{$item["nama"]}}">Hapus</button>
                                   
                                 </form>
                               @endcan
-                              
+                              @can('update', $item)
                               <a href="{{route('mahasiswa.edit', $item["id"])}}" class="btn btn-sm btn-rounded btn-warning">Ubah</a>
+                              @endcan
                             </td>
                         </tr>
                      @endforeach

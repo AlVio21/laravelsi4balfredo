@@ -29,7 +29,8 @@ class MahasiswaPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === 'A';
+        return $user->role === 'A' || $user->role === 'D';
+        // return in_array($user->role, ['A', 'D']);
     }
 
     /**
@@ -37,7 +38,7 @@ class MahasiswaPolicy
      */
     public function update(User $user, Mahasiswa $mahasiswa): bool
     {
-        //
+        return $user->role === 'A';
     }
 
     /**
@@ -45,7 +46,7 @@ class MahasiswaPolicy
      */
     public function delete(User $user, Mahasiswa $mahasiswa): bool
     {
-        //
+        return $user->role === 'A';
     }
 
     /**
